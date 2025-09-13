@@ -1,12 +1,13 @@
 ---
 interface Props {
 	name: string;
-    href: string;
+	href: string;
 	info: string;
 	full: boolean;
+	color: string;
 }
 
-const { name, href, info, full } = Astro.props;
+const { name, href, info, full, color } = Astro.props;
 ---
 
 <li class={
@@ -19,7 +20,7 @@ const { name, href, info, full } = Astro.props;
 	>
 		<h2
 			class="text-xl text-transparent font-bold bg-clip-text"
-			style="background-color: #1fe03c;"
+			style=`background-color: ${color};`
 		>{name}</h2>
 		<small class="">{info}</small>
 	</a>
