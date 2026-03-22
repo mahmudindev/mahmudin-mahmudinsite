@@ -1,0 +1,35 @@
+---
+interface Props {
+    image: string;
+	name: string;
+	desc: string;
+	href: string;
+    links?: {}[];
+}
+
+const { image, name, desc, href } = Astro.props;
+---
+
+<div class="border">
+    <img src={image} alt={name + " image"} class="h-56 w-full aspect-video object-cover" />
+    <div class="flex flex-col gap-4 p-4">
+        {
+            () => {
+                if (href == '') {
+                    return (
+                        <div class="border-b">
+                            <h4 class="text-xl mb-1">{name}</h4>
+                        </div>
+                    );
+                }
+
+                return (
+                    <a href={href} target="_blank" class="custom-a border-b">
+                        <h4 class="text-xl mb-1">{name}</h4>
+                    </a>
+                );
+            }
+        }
+        <p class="h-48 scrollbar-y-hover">{desc}</p>
+    </div>
+</div>

@@ -1,32 +1,305 @@
 ---
-import "../styles/global.css";
-import Layout from '../layouts/Layout.astro';
-import Welcome from '../components/Welcome.astro';
-import Sites from '../components/Sites.astro';
-import background from '../assets/background.svg';
+import Layout from "../layouts/Layout.astro";
+import CardA from '../components/section/CardA.astro';
+import CardB from '../components/section/CardB.astro';
 
-const name = 'Mahmudin Site';
-const slog = 'Just Random Man Personal Projects';
+const name = "Mahmudin Site";
+const slog = "Just Random Man Personal Projects";
+
+function getRawGithubURL(
+	username: string,
+	repository: string,
+	path: string
+) {
+	return 'raw.githubusercontent.com/' + username + '/' + repository + '/refs/heads/master/' + path;
+}
+
+const sect1Head = "Hello, my name is Muhammad Mahmudin";
+const sect1Desc = `
+I am a Developer who is currently based in Indonesia.
+`;
+const sect1Tags = ["🌍 Web Developer", "💻 Software Developer", "🎨 UI/UX Designer"];
+const sect1ImgSrc = "/assets/potrait.jpg";
+const sect1ImgAlt = "Mahmudin Potrait";
+const sect2 = [
+	{
+		icon: "🌍",
+		name: "Full Stack",
+		desc: `
+		I build end-to-end web solutions and comfortable taking a project from idea to deployment, ` + `
+		integrating APIs, optimizing performance, and delivering production-ready code.
+		`
+	},
+	{
+		icon: "💻",
+		name: "Software Development",
+		desc: `
+		I design and build reliable software that solves real life problems. I make sure to deliver ` + `
+		software that are scalable and optimized for long-term use with clean architecture and ` + `
+		maintainable code.
+		`
+	},
+	{
+		icon: "✨",
+		name: "Miscellaneous",
+		desc: `
+		I use multiple programming languages. I focus on simple design clarity, aesthetics, and ` + `
+		practicality. I can also design and build bot and game mod, a bit marketing, and edit video.
+		`
+	}
+];
+const sect3A = [
+	{
+		image: "/assets/landscape.png",
+		name: "The Oreno",
+		desc: `
+		Landing website designed and built to showcase Oreno projects. Project that I design and ` + `
+		bulid mainly for public use. It will focus on usability, performance, maintainability, ` + `
+		extendability, and rich intergrations between first-party or third-party services.
+		`,
+		href: "//oreno.top"
+	},
+	{
+		image: "/assets/landscape.png",
+		name: "Coming Soon...",
+		desc: `
+		-
+		`,
+		href: ""
+	},
+	{
+		image: "/assets/landscape.png",
+		name: "Coming Soon...",
+		desc: `
+		-
+		`,
+		href: ""
+	}
+];
+const sect3B = [
+	{
+		icon: "//icons.duckduckgo.com/ip3/minecraft.net.ico",
+		name: "MCMod",
+		items: [
+			{
+				image: "//" + getRawGithubURL(
+					"mahmudindev",
+					"mcmod-passengersportalfix",
+					"common/src/main/resources/assets/passengersportalfix/icon.png"
+				),
+				name: "Passengers Portal Fix",
+				desc: `
+				Minecraft Java mod to fix entities with passengers can't travel thorough portal ` + `
+				(MC-67) and other passenger related features.
+				`,
+				href: "https://github.com/mahmudindev/mcmod-passengersportalfix"
+			},
+			{
+				image: "//" + getRawGithubURL(
+					"mahmudindev",
+					"mcmod-worldportal",
+					"common/src/main/resources/assets/worldportal/icon.png"
+				),
+				name: "World Portal",
+				desc: `
+				Minecraft Java mod to create custom world portal to travel between dimensions.
+				`,
+				href: "https://github.com/mahmudindev/mcmod-worldportal"
+			},
+			{
+				image: "//" + getRawGithubURL(
+					"mahmudindev",
+					"mcmod-morecatvariants",
+					"common/src/main/resources/assets/morecatvariants/icon.png"
+				),
+				name: "More Cat Variants",
+				desc: `
+				Minecraft Java mod to add more cat variants.
+				`,
+				href: "https://github.com/mahmudindev/mcmod-morecatvariants"
+			},
+			{
+				image: "//" + getRawGithubURL(
+					"mahmudindev",
+					"mcmod-dimensionlink",
+					"common/src/main/resources/assets/dimensionlink/icon.png"
+				),
+				name: "Dimension Link",
+				desc: `
+				Minecraft Java mod to create portal link between dimensions to make custom world sets.
+				`,
+				href: "https://github.com/mahmudindev/mcmod-dimensionlink"
+			}
+		],
+		href: "/projects#mcmod"
+	}
+];
+const sect3C = [
+	{
+		icon: "//icons.duckduckgo.com/ip3/oreno.top.ico",
+		name: "Oreno",
+		desc: "Project Designed Mainly For Public Use",
+		href1: "//oreno.top",
+		href2: "//oreno.top/projects",
+		items: [
+			{
+				image: "/assets/landscape.png",
+				name: "NewsPasti",
+				desc: `
+				A news aggregation platform that collects news from multiple sources and languages, ` + `
+				then summarizes and group it into related news. The project focuses on efficient ` + `
+				delivery, multilingual handling, and clean presentation, allowing users to quickly ` + `
+				understand key topics without searching dozens of separate news.
+				`,
+				href: "//newspasti.oreno.top"
+			},
+			{
+				image: "/assets/landscape.png",
+				name: "ComicBagi",
+				desc: `
+				A comic hosting catalog. Curates and organizes comics while linking users to ` + `
+				platforms where each comic can be read. This project focus on clear categorization, ` + `
+				easy discovery, and simple browsing experience, providing users with a centralized ` + `
+				reference without directly hosting the content.
+				`,
+				href: "//comicbagi.oreno.top"
+			},
+			{
+				image: "/assets/landscape.png",
+				name: "ComicKing",
+				desc: `
+				A comic catalog. Organizes comics with detailed metadata, including summaries, ` + `
+				genres, and release information. This project also aggregates official sources ` + `
+				and community links, giving users a single place to explore, research, and discover ` + `
+				comics while connecting them to both official and fan-driven resources.
+				`,
+				href: "//comicking.oreno.top"
+			}
+		]
+	}
+];
 ---
 
-<Layout title={`${name}: ${slog}`}>
-	<div class="container mx-auto">
-		<img id="background" src={background.src} alt="" fetchpriority="high" />
-		<main class="">
-			<Welcome name={name} slog={slog} />
-			<Sites />
-		</main>
+<Layout title={`${name}: ${slog}`} name={name}>
+	<div class="flex flex-col gap-12 first:mt-12 last:mb-12 mx-4">
+		<div class="flex flex-col md:flex-row items-center gap-8">
+			<div class="flex flex-col gap-2 md:w-3/5">
+				<div class="h-full flex flex-col justify-center gap-2 text-xl max-md:text-center">
+					<h1 class="text-2xl lg:text-5xl font-bold">{sect1Head}</h1>
+					<p class="">{sect1Desc}</p>
+				</div>
+				<div class="flex flex-row flex-wrap max-md:place-content-center gap-2 py-2">
+					{
+						sect1Tags.map((text) => (
+							<div class="p-2 rounded-2xl bg-neutral-500">{text}</div>
+						))
+					}
+				</div>
+			</div>
+			<div class="flex flex-col justify-center md:w-2/5">
+				<img
+					src={sect1ImgSrc}
+					alt={sect1ImgAlt}
+					class="aspect-3/4 w-96 rounded-4xl object-cover border"
+				/>
+			</div>
+		</div>
+		<div class="flex flex-row flex-wrap p-4 border">
+			{
+				sect2.map((v) => (
+					<div class="flex flex-col gap-2 w-full lg:w-1/3 p-2">
+						<span class="text-4xl max-lg:text-center">{v.icon}</span>
+						<h2 class="text-2xl font-semibold">{v.name}</h2>
+						<p class="">{v.desc}</p>
+					</div>
+				))
+			}
+		</div>
+		<div class="flex flex-col gap-8">
+			<h2 class="w-full text-4xl text-center font-bold">My Projects</h2>
+			<div class="flex flex-col gap-8">
+				<div class="flex flex-row flex-wrap justify-center -m-2">
+					{
+						sect3A.map((v) => (
+							<div class="w-full md:w-1/2 lg:w-1/3 p-2">
+								<CardA
+									image={v.image}
+									name={v.name}
+									desc={v.desc}
+									href={v.href}
+								/>
+							</div>
+						))
+					}
+				</div>
+				<div class="flex flex-col gap-4 p-4 border">
+					{
+						sect3B.map((v) => (
+							<div class="border-b">
+								<div class="flex items-center justify-center gap-2 mb-2">
+									<img src={v.icon} class="w-6 h-6 mt-1" />
+									<h3 class="text-2xl font-semibold">{v.name}</h3>
+								</div>
+							</div>
+							<div class="flex flex-col gap-4">
+								<div class="flex flex-row flex-wrap justify-center -m-2">
+									{
+										v.items.map((v) => (
+											<div class="w-full md:w-1/2 p-2">
+												<CardB
+													image={v.image}
+													name={v.name}
+													desc={v.desc}
+													href={v.href}
+												/>
+											</div>
+										))
+									}
+								</div>
+								<a href={v.href} class="custom-a">
+									<div class="text-center p-2 border">MORE</div>
+								</a>
+							</div>
+						))
+					}
+				</div>
+			</div>
+			{
+				sect3C.map((v) => (
+					<div class="flex flex-col gap-4">
+						<a href={v.href1} class="custom-a border-b" target="_blank">
+							<div class="flex flex-col md:flex-row mb-2">
+								<div class="flex items-center gap-2">
+									<img src={v.icon} class="w-6 h-6 mt-1" />
+									<h3 class="text-2xl font-semibold">{v.name}</h3>
+								</div>
+								<p class="md:ml-auto">{v.desc}</p>
+							</div>
+						</a>
+						<div class="flex flex-row flex-wrap justify-center -m-2">
+							{
+								v.items.map((v) => (
+									<div class="w-full md:w-1/2 lg:w-1/3 p-2">
+										<CardA
+											image={v.image}
+											name={v.name}
+											desc={v.desc}
+											href={v.href}
+										/>
+									</div>
+								))
+							}
+						</div>
+						<a href={v.href2} class="custom-a" target="_blank">
+							<div class="text-center p-2 border">MORE</div>
+						</a>
+					</div>
+				))
+			}
+		</div>
+		<div class="flex flex-col items-center gap-4 p-12">
+			<h2 class="text-3xl text-center font-semibold">Interested in Working Together?</h2>
+			<button class="text-lg p-4 bg-emerald-500 rounded-2xl">Send a Message 📨</button>
+		</div>
 	</div>
 </Layout>
-
-<style>
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-	}
-</style>

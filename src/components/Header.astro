@@ -1,0 +1,20 @@
+---
+import Nav from "../components/header/Nav.astro";
+
+interface Props {
+	name: string;
+    navLinks: { label: string; href: string }[];
+}
+
+const { name, navLinks } = Astro.props;
+---
+
+<header class="flex">
+    <div class="global-container flex flex-col md:flex-row items-center gap-2 p-2 border-b">
+        <a href="/" class="flex flex-wrap gap-2 justify-center items-center">
+            <img src="/favicon.svg" alt="Logo" class="h-12 w-12" />
+            <h1 class="text-3xl text-center font-semibold">{name}</h1>
+        </a>
+        <Nav links={navLinks} />
+    </div>
+</header>

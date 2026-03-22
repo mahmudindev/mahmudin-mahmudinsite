@@ -1,0 +1,19 @@
+---
+interface Props {
+	links: { label: string; href: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav class="md:ms-auto">
+    <ul class="h-full flex gap-2 text-lg">
+        {
+            links.map(({label, href}) => (
+                <li class="h-full">
+                    <a class="h-full flex items-center text-center px-2 custom-a" href={href}>{label}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>

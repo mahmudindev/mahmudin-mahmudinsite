@@ -1,21 +1,35 @@
 ---
+import "../styles/global.css";
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 interface Props {
 	title: string;
+	name: string;
 }
 
-const { title } = Astro.props;
+const { title, name } = Astro.props;
+
+const navLinks: { label: string; href: string }[] = [
+	{ label: 'Home', href: '/' },
+	{ label: 'Projects', href: '/projects' },
+	{ label: 'About', href: '/about' }
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<Head title={title} />
 	</head>
-	<body class="min-h-screen text-white bg-neutral-950">
-		<slot />
+	<body>
+		<div class="min-h-screen global-colors">
+			<Header name={name} navLinks={navLinks} />
+			<main class="global-container">
+				<slot />
+			</main>
+			<Footer name={name} />
+		</div>
 	</body>
 </html>
